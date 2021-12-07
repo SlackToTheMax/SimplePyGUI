@@ -24,7 +24,7 @@ def the_thread(window):
 
 # First the window layout in 2 columns
 
-file_list_column = [
+_column = [
     [
         sg.Text("IP Address",size=(15, 1)),
         sg.In(size=(25, 1), key="-IP-"),
@@ -44,23 +44,14 @@ file_list_column = [
 ]
 
 
-# image_viewer_column = [
-#     [sg.Text("Choose an image from list on left:")],
-#     [sg.Text(size=(40, 1), key="-TOUT-")],
-#     [sg.Image(key="-IMAGE-")],
-# ]
-
-
 layout = [
     [
-        sg.Column(file_list_column),
-        #sg.VSeparator(),
-        #sg.Column(image_viewer_column),
+        sg.Column(_column),
     ]
 ]
 
 
-window = sg.Window("Image Viewer", layout)
+window = sg.Window("Packet Sender/Receiver", layout)
 
 threading.Thread(target=the_thread, args=(window,), daemon=True).start()
 
